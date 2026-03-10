@@ -1,9 +1,7 @@
-# 🌌 Premium Interactive Portfolio
+# Interactive Portfolio
 
-A state-of-the-art, high-performance developer portfolio featuring a modern glassmorphic design, dynamic 3D interactions, and a full-featured administrative dashboard.
+A high-performance developer portfolio featuring a modern glassmorphic design, dynamic 3D interactions, and a full-featured administrative dashboard.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-emerald?style=for-the-badge)](https://dawitsolomon-t.onrender.com)
-[![Status](https://img.shields.io/badge/status-active-emerald?style=for-the-badge)](https://dawitsolomon-t.onrender.com)
 
 ---
 
