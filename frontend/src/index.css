@@ -1,0 +1,659 @@
+@import "tailwindcss";
+@import "./styles/animations.css";
+
+:root {
+  /* color-scheme is set per-theme below */
+  --font-ui: "Space Grotesk", ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --font-display: "Syne", system-ui, sans-serif;
+  --radius-soft: 24px;
+  --radius-card: 28px;
+  --color-accent: #2ee8b3;
+  --color-accent-2: #ff8a3d;
+  --color-accent-3: #5aa9ff;
+  --color-emerald-400: var(--color-accent);
+  --glow-strong: 0 30px 80px rgba(46, 232, 179, 0.25);
+  --glow-soft: 0 20px 50px rgba(90, 169, 255, 0.18);
+}
+
+/* Small helper breakpoint (xs ~ 480px) for fine-grained grids */
+@media (min-width: 480px) {
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Text Highlight (Selection) */
+::selection {
+  background-color: rgba(46, 232, 179, 0.9);
+  color: #041013;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+::-moz-selection {
+  background-color: rgba(46, 232, 179, 0.9);
+  color: #041013;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  min-height: 100vh;
+}
+
+body {
+  font-family: var(--font-ui);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(46, 232, 179, 0.15), transparent 60%),
+    radial-gradient(900px 500px at 90% 0%, rgba(90, 169, 255, 0.12), transparent 55%),
+    radial-gradient(900px 500px at 70% 90%, rgba(255, 138, 61, 0.12), transparent 55%),
+    var(--color-bg);
+  color: var(--color-ink);
+  transition: background-color 400ms ease, color 400ms ease;
+}
+.display-font {
+  font-family: var(--font-display);
+}
+
+/* Theme tokens */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0a0b10;
+  --color-surface: #11131a;
+  --color-surface-2: #151a22;
+  --color-ink: #e8eef6;
+  --color-ink-muted: rgba(232, 238, 246, 0.72);
+  --modal-backdrop-brightness: 0.9;
+  --modal-backdrop-overlay: rgba(2, 6, 16, 0.45);
+  --nav-island-bg: rgba(15, 18, 26, 0.65);
+  --nav-island-border: rgba(255, 255, 255, 0.08);
+  --nav-island-shadow: rgba(0, 0, 0, 0.5);
+}
+[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: #f5f4f0;
+  --color-surface: #ffffff;
+  --color-surface-2: #f3f4f7;
+  --color-ink: #14161c;
+  --color-ink-muted: rgba(20, 22, 28, 0.7);
+  --modal-backdrop-brightness: 1.1;
+  --modal-backdrop-overlay: rgba(255, 255, 255, 0.6);
+  --nav-island-bg: rgba(255, 255, 255, 0.8);
+  --nav-island-border: rgba(0, 0, 0, 0.05);
+  --nav-island-shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* Semantic aliases for Tailwind-like usage via CSS vars */
+.text-ink {
+  color: var(--color-ink);
+}
+.bg-surface {
+  background-color: var(--color-surface);
+}
+.text-ink\/80 {
+  color: color-mix(in oklab, var(--color-ink), transparent 20%);
+}
+.bg-ink\/5 {
+  background-color: color-mix(in oklab, var(--color-ink), transparent 95%);
+}
+.border-ink\/10 {
+  border-color: color-mix(in oklab, var(--color-ink), transparent 90%);
+}
+.text-accent {
+  color: var(--color-accent);
+}
+.text-accent-2 {
+  color: var(--color-accent-2);
+}
+.text-accent-3 {
+  color: var(--color-accent-3);
+}
+.bg-accent {
+  background-color: var(--color-accent);
+}
+.bg-accent-2 {
+  background-color: var(--color-accent-2);
+}
+.bg-accent-3 {
+  background-color: var(--color-accent-3);
+}
+.text-gradient {
+  background: linear-gradient(120deg, var(--color-accent), var(--color-accent-3), var(--color-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.glass-surface {
+  background: color-mix(in oklab, var(--color-surface), transparent 22%);
+  border: 1px solid color-mix(in oklab, var(--color-ink), transparent 88%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.card-neo {
+  border-radius: var(--radius-card);
+  background: color-mix(in oklab, var(--color-surface), transparent 6%);
+  border: 1px solid color-mix(in oklab, var(--color-ink), transparent 86%);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+}
+.chip {
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--color-ink), transparent 85%);
+  background: color-mix(in oklab, var(--color-surface), transparent 18%);
+  color: var(--color-ink-muted);
+}
+.btn-primary {
+  background: linear-gradient(120deg, var(--color-accent), var(--color-accent-3));
+  color: #061013;
+  box-shadow: var(--glow-strong);
+}
+.btn-secondary {
+  background: color-mix(in oklab, var(--color-surface), transparent 12%);
+  border: 1px solid color-mix(in oklab, var(--color-ink), transparent 80%);
+  color: var(--color-ink);
+}
+
+/* Smooth transitions for common elements */
+
+/* Clamp overflow to avoid layout shifts from hover effects */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Global transitions for theme elements */
+body {
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+/* Common interactive transitions */
+.btn-premium-interactive,
+.nav-link-premium,
+.card,
+.interactive {
+  transition: all 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+/* Theme icon visibility */
+[data-theme="dark"] .theme-sun {
+  display: none;
+}
+[data-theme="light"] .theme-moon {
+  display: none;
+}
+
+/* --- Amazing Scrolled Island for Light Mode --- */
+[data-theme="light"] .amazing-island-light {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(240, 253, 244, 0.9) 50%,
+    rgba(239, 246, 255, 0.9) 100%
+  ) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(16, 185, 129, 0.2) !important;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.01), 
+    0 10px 15px -3px rgba(16, 185, 129, 0.1),
+    0 20px 25px -5px rgba(16, 185, 129, 0.1) !important;
+}
+
+[data-theme="light"] header.elevated-header {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+[data-theme="dark"] header.elevated-header {
+  /* Keep transparent in dark mode as requested */
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+/* Themed card helper */
+.card {
+  background: color-mix(in oklab, var(--color-surface), transparent 0%);
+  border: 1px solid color-mix(in oklab, var(--color-ink), transparent 85%);
+  backdrop-filter: blur(6px);
+  transform: translateZ(0);
+}
+.card:hover {
+  box-shadow: 0 10px 30px hsl(210 24% 10% / 0.12);
+  transform: translateY(-2px);
+}
+.card:active {
+  transform: translateY(0);
+}
+
+/***** Utilities *****/
+/* glowing focus ring */
+.focus-glow:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(46, 232, 179, 0.45);
+  outline-offset: 2px;
+}
+
+/* link and button hover effects */
+.interactive:hover {
+  transform: translateY(-1px);
+}
+.interactive:active {
+  transform: translateY(0);
+}
+
+/* Hide scrollbars for horizontal scrolling nav */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Pulse animation for active nav item */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Global Backdrop State for Modals */
+body.modal-open #root {
+  transform: scale(0.98);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.8;
+}
+
+#root {
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+/* Modal Animations */
+@keyframes zoom-in-modal {
+  from { transform: scale(0.95) translateY(20px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.animate-modal-entry {
+  animation: zoom-in-modal 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* nicer scrollbars */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--color-accent), #0a0b10 65%);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Atmosphere layers */
+.aurora-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -30;
+  mix-blend-mode: screen;
+  opacity: 0.7;
+  filter: blur(12px);
+  animation: aurora-drift 18s ease-in-out infinite;
+}
+.aurora-layer.alt {
+  animation-duration: 24s;
+  opacity: 0.55;
+}
+.aurora-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -25;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.card-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(500px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(46, 232, 179, 0.18), transparent 40%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+.ring-orbit {
+  position: absolute;
+  inset: -8%;
+  border-radius: 999px;
+  border: 1px dashed color-mix(in oklab, var(--color-accent-3), transparent 65%);
+  animation: spin-slow 22s linear infinite;
+}
+.ring-orbit.alt {
+  inset: -16%;
+  border-color: color-mix(in oklab, var(--color-accent-2), transparent 70%);
+  animation-duration: 30s;
+}
+.cursor-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -10;
+  background: radial-gradient(220px circle at var(--x, -200px) var(--y, -200px), rgba(46, 232, 179, 0.18), transparent 60%);
+  mix-blend-mode: screen;
+  transition: background 80ms ease;
+}
+.marquee {
+  overflow: hidden;
+  position: relative;
+}
+.marquee-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+}
+
+/* Spotlight slider */
+.spotlight-shell {
+  position: relative;
+  padding: 0;
+}
+.spotlight-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(400px circle at var(--spot-x, 40%) var(--spot-y, 40%), rgba(46, 232, 179, 0.2), transparent 60%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+.spotlight-stage {
+  position: relative;
+  min-height: 420px;
+}
+.spotlight-card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0;
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  transition: opacity 600ms ease, transform 600ms ease;
+  pointer-events: none;
+}
+.spotlight-card.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.spotlight-media {
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
+  background: radial-gradient(60% 60% at 20% 10%, rgba(90, 169, 255, 0.2), transparent 60%);
+}
+.spotlight-media-inner {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.spotlight-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  transform: scale(1.02);
+  transition: transform 900ms ease;
+}
+.spotlight-card.is-active .spotlight-image {
+  transform: scale(1.08);
+}
+.spotlight-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.spotlight-controls {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .spotlight-card {
+    grid-template-columns: 1fr;
+  }
+  .spotlight-media {
+    border-top-right-radius: 28px;
+    border-bottom-left-radius: 0;
+    min-height: 240px;
+  }
+}
+
+/* Timeline */
+.timeline-shell {
+  position: relative;
+  padding-left: 24px;
+}
+.timeline-shell::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(46, 232, 179, 0.6), transparent);
+}
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.timeline-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.timeline-dot {
+  height: 14px;
+  width: 14px;
+  border-radius: 999px;
+  background: rgba(46, 232, 179, 0.9);
+  box-shadow: 0 0 0 6px rgba(46, 232, 179, 0.12);
+  margin-top: 14px;
+}
+.timeline-card {
+  padding: 20px 24px;
+}
+
+/* Constellation */
+.constellation {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  padding: 32px;
+}
+.constellation-orbit {
+  position: absolute;
+  inset: 10%;
+  border-radius: 999px;
+  border: 1px dashed rgba(90, 169, 255, 0.3);
+  animation: spin-slow 28s linear infinite;
+}
+.constellation-orbit.alt {
+  inset: 22%;
+  border-color: rgba(255, 138, 61, 0.25);
+  animation-duration: 36s;
+}
+.constellation-core {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+.constellation-node {
+  position: absolute;
+  cursor: pointer;
+}
+.constellation-dot {
+  display: block;
+  height: 10px;
+  width: 10px;
+  border-radius: 999px;
+  background: rgba(46, 232, 179, 0.9);
+  box-shadow: 0 0 18px rgba(46, 232, 179, 0.5);
+}
+.constellation-tooltip {
+  position: absolute;
+  left: 14px;
+  top: -6px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(15, 18, 26, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 200ms ease, transform 200ms ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.constellation-node:hover .constellation-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Divider */
+.divider-shell {
+  position: relative;
+  height: 2px;
+  background: transparent;
+}
+.divider-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(46, 232, 179, 0.7), rgba(90, 169, 255, 0.7), transparent);
+  animation: divider-flow 8s linear infinite;
+}
+.divider-pulse {
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: rgba(46, 232, 179, 0.9);
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 16px rgba(46, 232, 179, 0.6);
+  animation: pulse-slow 2.6s ease-in-out infinite;
+}
+.divider-pulse.left { left: 20%; }
+.divider-pulse.center { left: 50%; animation-delay: 0.4s; }
+.divider-pulse.right { left: 80%; animation-delay: 0.8s; }
+
+/* About enhancements */
+.about-story {
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+}
+.about-story::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px circle at 20% 10%, rgba(46, 232, 179, 0.12), transparent 55%),
+              radial-gradient(500px circle at 80% 90%, rgba(90, 169, 255, 0.12), transparent 55%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+.about-story-card {
+  position: relative;
+  border-radius: 24px;
+  background: color-mix(in oklab, var(--color-surface), transparent 6%);
+  border: 1px solid color-mix(in oklab, var(--color-ink), transparent 88%);
+  padding: 18px 20px;
+}
+.about-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid color-mix(in oklab, var(--color-ink), transparent 86%);
+  background: color-mix(in oklab, var(--color-surface), transparent 10%);
+}
+.about-carousel-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+.about-carousel-card {
+  min-width: 220px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: color-mix(in oklab, var(--color-surface), transparent 6%);
+  border: 1px solid color-mix(in oklab, var(--color-ink), transparent 85%);
+}
+.about-timeline {
+  position: relative;
+  padding-left: 18px;
+}
+.about-timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(46, 232, 179, 0.6), transparent);
+}
+.about-timeline-item {
+  position: relative;
+  margin-bottom: 16px;
+}
+.about-timeline-dot {
+  position: absolute;
+  left: -2px;
+  top: 6px;
+  height: 10px;
+  width: 10px;
+  border-radius: 999px;
+  background: rgba(46, 232, 179, 0.9);
+  box-shadow: 0 0 0 6px rgba(46, 232, 179, 0.12);
+}
