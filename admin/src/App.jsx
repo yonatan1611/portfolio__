@@ -11,6 +11,7 @@ import Skills from './pages/Skills';
 import Experience from './pages/Experience';
 import Services from './pages/Services';
 import Settings from './pages/Settings';
+import Messages from './pages/Messages';
 
 const AppRoutes = () => {
     const { isAuthenticated, loading } = useAuth();
@@ -28,6 +29,7 @@ const AppRoutes = () => {
             }>
                 <Route index element={<Dashboard />} />
                 <Route path="projects" element={<Projects />} />
+                <Route path="messages" element={<Messages />} />
                 <Route path="services" element={<Services />} />
                 <Route path="skills" element={<Skills />} />
                 <Route path="experience" element={<Experience />} />

@@ -10,64 +10,73 @@ import {
   ArchiveBoxIcon
 } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { api } from '../api';
 
 const Messages = () => {
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      name: 'John Doe',
-      email: 'john@example.com',
-      company: 'Tech Corp',
-      budget: '$5,000 - $10,000',
-      message: 'We are interested in developing a custom e-commerce platform for our business. Would love to discuss the possibilities.',
-      date: '2024-01-15T10:30:00Z',
-      status: 'unread',
-      priority: 'high'
-    },
-    {
-      id: 2,
-      name: 'Jane Smith',
-      email: 'jane@company.com',
-      company: 'Startup Inc',
-      budget: '$1,000 - $5,000',
-      message: 'Looking for a mobile app developer to help us launch our new product. Timeline is tight, need someone reliable.',
-      date: '2024-01-14T15:45:00Z',
-      status: 'read',
-      priority: 'medium'
-    },
-    {
-      id: 3,
-      name: 'Mike Johnson',
-      email: 'mike@business.com',
-      company: 'Business Solutions',
-      budget: '$10,000+',
-      message: 'We need a complete digital transformation for our company. Looking for an experienced team to handle everything.',
-      date: '2024-01-13T09:20:00Z',
-      status: 'read',
-      priority: 'low'
-    }
-  ]);
+  const [messages, setMessages] = useState([]);
   const [selectedMessage, setSelectedMessage] = useState(null);
   const [filter, setFilter] = useState('all');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const loadMessages = async () => {
+      try {
+        setLoading(true);
+        const data = await api.getContactMessages();
+        setMessages(data);
+      } catch (err) {
+        console.error(err);
+        setError(err.message || 'Failed to load messages');
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadMessages();
+  }, []);
 
   const filteredMessages = messages.filter(message => {
-    if (filter === 'unread') return message.status === 'unread';
+    if (filter === 'unread') return message.status === 'new';
     if (filter === 'read') return message.status === 'read';
+    if (filter === 'archived') return message.status === 'archived';
     return true;
   });
 
-  const markAsRead = (id) => {
-    setMessages(messages.map(msg =>
-      msg.id === id ? { ...msg, status: 'read' } : msg
-    ));
+  const markAsRead = async (id) => {
+    try {
+      const updated = await api.updateContactMessageStatus(id, 'read');
+      setMessages(messages.map(msg =>
+        msg._id === id ? updated : msg
+      ));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const deleteMessage = (id) => {
-    setMessages(messages.filter(msg => msg.id !== id));
+  const deleteMessage = async (id) => {
+    try {
+      await api.deleteContactMessage(id);
+      setMessages(messages.filter(msg => msg._id !== id));
+      if (selectedMessage?._id === id) {
+        setSelectedMessage(null);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const archiveMessage = (id) => {
-    setMessages(messages.filter(msg => msg.id !== id));
+  const archiveMessage = async (id) => {
+    try {
+      const updated = await api.updateContactMessageStatus(id, 'archived');
+      setMessages(messages.map(msg =>
+        msg._id === id ? updated : msg
+      ));
+      if (selectedMessage?._id === id) {
+        setSelectedMessage(updated);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const getPriorityColor = (priority) => {
@@ -109,6 +118,7 @@ const Messages = () => {
             <option value="all">All Messages</option>
             <option value="unread">Unread</option>
             <option value="read">Read</option>
+            <option value="archived">Archived</option>
           </select>
           <button className="flex-1 sm:flex-none px-6 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20 font-bold text-sm">
             Export
@@ -123,25 +133,42 @@ const Messages = () => {
             <div className="p-4 border-b border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Messages</h3>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                {filteredMessages.filter(m => m.status === 'unread').length} unread
+                {filteredMessages.filter(m => m.status === 'new').length} unread
               </p>
             </div>
             <div className="divide-y divide-gray-200 dark:divide-gray-700 max-h-[calc(100vh-200px)] overflow-y-auto">
-              {filteredMessages.map((message, index) => (
+              {loading && (
+                <div className="p-4 text-sm text-gray-500 dark:text-gray-400">
+                  Loading messages...
+                </div>
+              )}
+              {!loading && error && (
+                <div className="p-4 text-sm text-red-500">
+                  {error}
+                </div>
+              )}
+              {!loading && !error && filteredMessages.length === 0 && (
+                <div className="p-4 text-sm text-gray-500 dark:text-gray-400">
+                  No messages yet.
+                </div>
+              )}
+              {!loading && !error && filteredMessages.map((message, index) => (
                 <motion.div
-                  key={message.id}
+                  key={message._id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   onClick={() => {
                     setSelectedMessage(message);
-                    markAsRead(message.id);
+                    if (message.status === 'new') {
+                      markAsRead(message._id);
+                    }
                   }}
                   className={`p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
-                    selectedMessage?.id === message.id
+                    selectedMessage?._id === message._id
                       ? 'bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary-500'
                       : ''
-                  } ${message.status === 'unread' ? 'bg-blue-50 dark:bg-blue-900/10' : ''}`}
+                  } ${message.status === 'new' ? 'bg-blue-50 dark:bg-blue-900/10' : ''}`}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1 min-w-0">
@@ -150,17 +177,17 @@ const Messages = () => {
                           {message.name}
                         </h4>
                         <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getPriorityColor(message.priority)}`}>
-                          {message.priority}
+                          {message.priority || 'medium'}
                         </span>
                       </div>
                       <p className="text-sm text-gray-500 dark:text-gray-400 truncate mt-1">
                         {message.message}
                       </p>
                       <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
-                        {formatDate(message.date)}
+                        {formatDate(message.createdAt || message.date)}
                       </p>
                     </div>
-                    {message.status === 'unread' && (
+                    {message.status === 'new' && (
                       <div className="flex-shrink-0">
                         <div className="h-2.5 w-2.5 bg-primary-500 rounded-full"></div>
                       </div>
@@ -190,13 +217,13 @@ const Messages = () => {
                   </div>
                   <div className="flex space-x-2">
                     <button
-                      onClick={() => archiveMessage(selectedMessage.id)}
+                      onClick={() => archiveMessage(selectedMessage._id)}
                       className="p-2.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
                     >
                       <ArchiveBoxIcon className="h-5 w-5" />
                     </button>
                     <button
-                      onClick={() => deleteMessage(selectedMessage.id)}
+                      onClick={() => deleteMessage(selectedMessage._id)}
                       className="p-2.5 text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
                     >
                       <TrashIcon className="h-5 w-5" />
@@ -231,7 +258,7 @@ const Messages = () => {
                     </div>
                     <div>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Company</p>
-                      <p className="font-medium text-gray-900 dark:text-white">{selectedMessage.company}</p>
+                      <p className="font-medium text-gray-900 dark:text-white">{selectedMessage.company || '—'}</p>
                     </div>
                   </div>
 
@@ -241,7 +268,7 @@ const Messages = () => {
                     </div>
                     <div>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Budget</p>
-                      <p className="font-medium text-gray-900 dark:text-white">{selectedMessage.budget}</p>
+                      <p className="font-medium text-gray-900 dark:text-white">{selectedMessage.budget || '—'}</p>
                     </div>
                   </div>
                 </div>
@@ -256,9 +283,12 @@ const Messages = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <button className="flex-1 px-4 py-2.5 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg hover:from-primary-600 hover:to-secondary-600 transition-all duration-200 shadow-card">
+                  <a
+                    href={`mailto:${selectedMessage.email}`}
+                    className="flex-1 px-4 py-2.5 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg hover:from-primary-600 hover:to-secondary-600 transition-all duration-200 shadow-card text-center"
+                  >
                     Reply
-                  </button>
+                  </a>
                   <button className="px-4 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                     <PhoneIcon className="h-5 w-5" />
                   </button>

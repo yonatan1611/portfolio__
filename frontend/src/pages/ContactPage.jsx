@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import FadeIn from "../components/common/FadeIn";
 import { api } from "../api";
 import { useSettings } from "../context/SettingsContext";
@@ -50,28 +49,16 @@ export default function ContactPage() {
     setStatus("sending");
 
     try {
-      // Configuration from .env
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const formData = new FormData(formRef.current);
+      const payload = Object.fromEntries(formData.entries());
+      const result = await api.submitContact(payload);
 
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error("EmailJS configuration is missing. Please check your environment variables.");
-      }
-
-      const result = await emailjs.sendForm(
-        serviceId,
-        templateId,
-        formRef.current,
-        publicKey
-      );
-
-      if (result.status === 200) {
+      if (result?.success) {
         setStatus("sent");
         formRef.current?.reset();
       } else {
         setStatus("error");
-        console.error("EmailJS Error:", result.text);
+        console.error("Contact submission error:", result);
       }
     } catch (err) {
       setStatus("error");
@@ -127,15 +114,19 @@ export default function ContactPage() {
                 <div className="sm:col-span-2 mt-2 flex items-center gap-3">
                   <button
                     disabled={status === "sending"}
-                    className="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-gray-900 bg-[linear-gradient(120deg,#2ee8b3,#5aa9ff)] disabled:opacity-70"
+                    className="relative inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium text-gray-900 bg-[linear-gradient(120deg,#2ee8b3,#5aa9ff)] disabled:opacity-70 overflow-hidden"
                   >
-                    {status === "sending"
+                    <span className="absolute -inset-2 rounded-full bg-[radial-gradient(60%_60%_at_50%_50%,rgba(46,232,179,0.45),rgba(90,169,255,0.25),transparent_70%)] blur-md" />
+                    <span className="absolute inset-0 rounded-full border border-white/40 opacity-60" />
+                    <span className="relative">
+                      {status === "sending"
                       ? "Sending…"
                       : status === "sent"
                       ? "Sent!"
                       : status === "error"
                       ? "Try Again"
                       : "Send message"}
+                    </span>
                   </button>
                   {status === "sent" && (
                     <span className="text-sm text-accent font-medium">
@@ -185,3 +176,5 @@ export default function ContactPage() {
     </div>
   );
 }
+
+

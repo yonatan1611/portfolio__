@@ -23,7 +23,7 @@ export default function Hero() {
   const { hero, site, socials } = settings || {};
   const profileImg = site?.profileImage?.startsWith('/') ? site.profileImage : profileImageDefault;
 
-  const resumeLink = site?.resumeLink || "/resume/Dawit_Solomon_Resume.pdf";
+  const resumeLink = site?.resumeLink || "/resume/CV.pdf";
   const socialLinks = [
     { href: resumeLink, label: "Resume" },
     { href: socials?.github, label: "GitHub" },
@@ -172,7 +172,7 @@ export default function Hero() {
                 Available
               </div>
               <div className="absolute -right-8 bottom-10 hidden lg:flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[10px] uppercase tracking-[0.28em] text-ink/70 animate-float-slow [animation-delay:1.2s]">
-                MERN / UI
+                Build / UI
               </div>
             </div>
           </FadeIn>

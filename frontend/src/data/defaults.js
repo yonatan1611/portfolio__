@@ -1,8 +1,8 @@
 export const defaultProjects = [
   {
-    title: "PinQuest",
-    description: "High-performance social discovery platform enabling real-time landmark sharing. Built with React 19.",
-    image: "/Project_Images/PinQuest.png",
+    title: "FoodShare",
+    description: "A scalable and community-driven food donation and distribution platform that connects donors, volunteers, and recipients to reduce food waste and hunger.",
+    image: "/Project_Images/FoodShare2.png",
     technologies: ["React", "Tailwind", "MongoDB", "Express", "Socket.io"],
     githubLink: "https://github.com/devasol/PinQuest",
     liveLink: "https://pinquest-app.onrender.com/",

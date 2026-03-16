@@ -247,4 +247,45 @@ export const api = {
     if (!response.ok) throw new Error(data.message || 'Failed to update settings');
     return data;
   },
+
+  // Contact Messages
+  getContactMessages: async () => {
+    const token = getAuthToken();
+    const response = await fetch(`${API_BASE_URL}/contact`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to fetch contact messages');
+    return data.data;
+  },
+
+  updateContactMessageStatus: async (id, status) => {
+    const token = getAuthToken();
+    const response = await fetch(`${API_BASE_URL}/contact/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ status })
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to update message');
+    return data.data;
+  },
+
+  deleteContactMessage: async (id) => {
+    const token = getAuthToken();
+    const response = await fetch(`${API_BASE_URL}/contact/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to delete message');
+    return data;
+  },
 };

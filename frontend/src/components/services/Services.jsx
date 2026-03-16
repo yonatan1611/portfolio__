@@ -116,7 +116,7 @@ function TiltCard({ item, index, expandedIndex, setExpandedIndex, onScrollTo }) 
         el.style.setProperty("--spot-x", `${localX}px`);
         el.style.setProperty("--spot-y", `${localY}px`);
         setTransform(
-          `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) scale(${
+          `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) scale(${ 
             hovered ? 1.02 : 1
           })`
         );
@@ -260,7 +260,7 @@ export default function Services() {
               What I can do for you
             </h2>
             <p className="mt-4 text-sm sm:text-base text-ink/80 max-w-xl">
-              Highly interactive, performance‑minded experiences with tasteful
+              Highly interactive, performance-minded experiences with tasteful
               motion and a focus on outcomes.
             </p>
           </div>

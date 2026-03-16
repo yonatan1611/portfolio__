@@ -14,6 +14,7 @@ import skillRoutes from './routes/skills.js';
 import experienceRoutes from './routes/experience.js';
 import settingRoutes from './routes/settings.js';
 import serviceRoutes from './routes/services.js';
+import contactRoutes from './routes/contact.js';
 import autoSeedData from './utils/autoSeed.js';
 
 // Load environment variables
@@ -97,16 +98,7 @@ app.use('/api/skills', skillRoutes);
 app.use('/api/experience', experienceRoutes);
 app.use('/api/settings', settingRoutes);
 app.use('/api/services', serviceRoutes);
-
-// Contact form endpoint (Legacy - Logic moved to Frontend EmailJS)
-app.post('/api/contact', async (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: 'Message received (Front-end bypass active)'
-  });
-});
-
-
+app.use('/api/contact', contactRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

@@ -8,8 +8,8 @@ import ContactPage from "./ContactPage";
 import FadeIn from "../components/common/FadeIn";
 import ProofStrip from "../components/common/ProofStrip";
 import ProjectSpotlight from "../components/common/ProjectSpotlight";
-import ProcessTimeline from "../components/common/ProcessTimeline";
-import SkillsConstellation from "../components/common/SkillsConstellation";
+//import ProcessTimeline from "../components/common/ProcessTimeline";
+//import SkillsConstellation from "../components/common/SkillsConstellation";
 import KineticDivider from "../components/common/KineticDivider";
 
 export default function HomePage() {

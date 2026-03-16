@@ -10,6 +10,7 @@ import {
   Cog6ToothIcon,
   Square3Stack3DIcon,
   RocketLaunchIcon,
+  ChatBubbleLeftRightIcon,
   XMarkIcon
 } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
@@ -34,6 +35,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   const navItems = [
     { name: 'Dashboard', path: '/', icon: HomeIcon },
     { name: 'Projects', path: '/projects', icon: FolderIcon },
+    { name: 'Messages', path: '/messages', icon: ChatBubbleLeftRightIcon },
     { name: 'Services', path: '/services', icon: WrenchScrewdriverIcon },
     { name: 'Skills', path: '/skills', icon: Square3Stack3DIcon },
     { name: 'Experience', path: '/experience', icon: BriefcaseIcon },
@@ -55,7 +57,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             <RocketLaunchIcon className="h-6 w-6 text-white" />
           </div>
           <h1 className="text-xl font-black tracking-tight bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-400 dark:to-white bg-clip-text text-transparent">
-            CORE
+            Yoni
           </h1>
         </div>
 
