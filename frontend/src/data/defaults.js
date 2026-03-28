@@ -4,7 +4,7 @@ export const defaultProjects = [
     description: "A scalable and community-driven food donation and distribution platform that connects donors, volunteers, and recipients to reduce food waste and hunger.",
     image: "/Project_Images/FoodShare2.png",
     technologies: ["React", "Tailwind", "MongoDB", "Express", "Socket.io"],
-    githubLink: "https://github.com/devasol/PinQuest",
+    githubLink: "https://github.com/yonatan1611/FoodShare",
     liveLink: "https://pinquest-app.onrender.com/",
     category: "Full Stack",
     featured: true,
@@ -13,7 +13,7 @@ export const defaultProjects = [
   {
     title: "DLMS - Driving License Management System",
     description: "End-to-end digital verification system that reduced manual license processing time by 40%.",
-    image: "/Project_Images/DLMS.png",
+    image: "/Project_Images/Saas.png",
     technologies: ["React", "Material-UI", "Node.js", "MongoDB", "JWT"],
     githubLink: "https://github.com/devasol/DLMS--Driving-license-management-system",
     liveLink: "https://get-dlms.onrender.com/",

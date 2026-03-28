@@ -5,7 +5,7 @@ const settingSchema = new mongoose.Schema({
   hero: {
     role: { type: String, default: 'Web Developer' },
     welcomeText: { type: String, default: 'Hello I’m' },
-    name: { type: String, default: 'Dawit Solomon' },
+    name: { type: String, default: 'Yonatan Girmachew' },
     bio: { type: String, default: 'I’m a passionate developer who enjoys turning ideas into clean, efficient, and user-friendly digital experiences.' },
     stats: [
       {
@@ -19,8 +19,8 @@ const settingSchema = new mongoose.Schema({
   // Section: About
   about: {
     codeBlock: {
-      firstName: { type: String, default: 'Dawit' },
-      lastName: { type: String, default: 'Solomon' },
+      firstName: { type: String, default: 'Yonatan' },
+      lastName: { type: String, default: 'Girmachew' },
       role: { type: String, default: 'Full Stack Engineer' },
       traits: [{ type: String }],
       bioLines: [{ type: String }]
@@ -32,16 +32,16 @@ const settingSchema = new mongoose.Schema({
 
   // Section: Site Identity
   site: {
-    logoText: { type: String, default: 'Dawit' },
-    resumeLink: { type: String, default: '/resume/Dawit_Solomon_Resume.pdf' },
+    logoText: { type: String, default: 'Yonatan' },
+    resumeLink: { type: String, default: '/resume/CV.pdf' },
     profileImage: { type: String, default: '/assets/profile-image/profile-image.png' }
   },
 
   // Section: Social Links
   socials: {
-    github: { type: String, default: 'https://github.com/devasol' },
-    linkedin: { type: String, default: 'https://www.linkedin.com/in/dawit-solomon-0450602a0/' },
-    email: { type: String, default: 'dawit8908@gmail.com' },
+    github: { type: String, default: 'https://github.com/yonatan1611' },
+    linkedin: { type: String, default: 'https://www.linkedin.com/in/yonatan-girmachew-b693b3291/' },
+    email: { type: String, default: 'yonatangirmachew3@gmail.com' },
     twitter: { type: String, default: '' }
   },
   education: [

@@ -121,7 +121,7 @@ export default function Navbar() {
               }}
               className="display-font font-bold text-2xl tracking-tight cursor-pointer"
             >
-              <span className="text-ink">{loading || !settings ? "Dawit" : settings.site.logoText}</span>
+              <span className="text-ink">{loading || !settings ? "Yonatan" : settings.site.logoText}</span>
               <span className="text-accent-2">.</span>
             </Link>
           </div>
@@ -166,7 +166,7 @@ export default function Navbar() {
               <span className="relative z-10">HIRE ME</span>
             </a>
             <a
-              href={loading || !settings ? "/resume/Dawit_Solomon_Resume.pdf" : settings.site.resumeLink}
+              href={loading || !settings ? "/resume/CV.pdf" : settings.site.resumeLink}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-premium-interactive btn-secondary inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-bold backdrop-blur-md transition-all shadow-sm"

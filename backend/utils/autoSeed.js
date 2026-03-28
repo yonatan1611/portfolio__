@@ -60,8 +60,8 @@ const autoSeedData = async () => {
         if (settingsCount === 0) {
             console.log('🌱 Seeding default settings...');
             await Setting.create({
-                hero: { name: "Dawit Solomon", role: "Web Developer", bio: "Developer building purposeful experiences." },
-                site: { logoText: "Dawit" }
+                hero: { name: "Yonatan Girmachew", role: "Web Developer", bio: "Developer building purposeful experiences." },
+                site: { logoText: "Yonatan" }
             });
         }
 

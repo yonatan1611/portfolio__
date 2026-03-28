@@ -106,7 +106,7 @@ const settingsData = {
   hero: {
     role: "Full Stack Developer (MERN)",
     welcomeText: "Hello I’m",
-    name: "Dawit Solomon",
+    name: "Yonatan Girmachew",
     bio: "Dynamic Full Stack Developer specializing in the MERN stack with a proven track record of building scalable, high-performance web applications. Expertise in crafting seamless user experiences across various domains.",
     stats: [
       { value: "3+", label1: "Years of", label2: "Impact" },
@@ -117,8 +117,8 @@ const settingsData = {
   },
   about: {
     codeBlock: {
-      firstName: "Dawit",
-      lastName: "Solomon",
+      firstName: "Yonatan",
+      lastName: "Girmachew",
       role: "Full Stack Developer",
       traits: ["Solution-Oriented", "Reliable", "Performance-Driven"],
       bioLines: [
@@ -135,14 +135,14 @@ const settingsData = {
     ]
   },
   site: {
-    logoText: "Dawit",
-    resumeLink: "/resume/Dawit_Solomon_Resume.pdf",
+    logoText: "Yonatan",
+    resumeLink: "/resume/CV.pdf",
     profileImage: "/assets/profile-image/profile-image.png"
   },
   socials: {
     github: "https://github.com/devasol",
-    linkedin: "https://www.linkedin.com/in/dawit-solomon-t/",
-    email: "dawit8908@gmail.com",
+    linkedin: "https://www.linkedin.com/in/yonatan-girmachew/",
+    email: "yonatangirmachew3@gmail.com",
     twitter: ""
   },
   education: [

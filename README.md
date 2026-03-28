@@ -2,7 +2,6 @@
 
 A high-performance developer portfolio featuring a modern glassmorphic design, dynamic 3D interactions, and a full-featured administrative dashboard.
 
-
 ---
 
 ## ✨ Features
@@ -19,12 +18,14 @@ A high-performance developer portfolio featuring a modern glassmorphic design, d
 ## 🛠 Technology Stack
 
 ### Frontend
+
 - **React 19** - Modern component-based architecture.
 - **Tailwind CSS 4** - Advanced utility-first styling.
 - **Framer Motion** - Silky smooth animations and transitions.
 - **EmailJS** - Client-side email delivery.
 
 ### Backend
+
 - **Node.js & Express** - Efficient, scalable server-side logic.
 - **MongoDB & Mongoose** - Robust NoSQL database management.
 - **JWT** - Secure administrative authentication.
@@ -47,15 +48,18 @@ portfolio/
 ## 🚀 Quick Start
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/devasol/portfolio.git
 cd portfolio
 ```
 
 ### 2. Configure Environment Variables
+
 Create `.env` files in both `frontend/`, `admin/`, and `backend/` directories based on the provided `.env.example` templates.
 
 ### 3. Install Dependencies
+
 ```bash
 # Backend
 cd backend && npm install
@@ -68,6 +72,7 @@ cd ../admin && npm install
 ```
 
 ### 4. Run Development Servers
+
 ```bash
 # Start Backend (on port 5001)
 npm run dev
@@ -92,9 +97,9 @@ The project is configured for deployment on **Render**.
 
 ## 🤝 Contact
 
-**Dawit Solomon** - [dawit8908@gmail.com](mailto:dawit8908@gmail.com)
+**Yonatan Girmachew** - [yonatangirmachew3@@gmail.com](mailto:yonatangirmachew3@gmail.com)
 
-Project Link: [https://github.com/devasol/portfolio](https://github.com/devasol/portfolio)
+Project Link: [https://github.com/yonatan1611/portfolio](https://github.com/yonatan1611/portfolio)
 
 ---
 

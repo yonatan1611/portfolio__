@@ -6,9 +6,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const { hero, socials } = settings || {};
-  const name = hero?.name || "Dawit Solomon";
-  const githubUrl = socials?.github || "https://github.com/devasol";
-  const linkedinUrl = socials?.linkedin || "https://www.linkedin.com/in/dawit-solomon-0450602a0/";
+  const name = hero?.name || "Yonatan Girmachew";
+  const githubUrl = socials?.github || "https://github.com/yonatan1611";
+  const linkedinUrl = socials?.linkedin || "https://www.linkedin.com/in/yonatan-girmachew/";
 
   return (
     <footer className="w-full mt-12 border-t border-white/5 pt-10 pb-12 relative z-10">

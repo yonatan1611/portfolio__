@@ -19,7 +19,7 @@ export default function PrintableResume() {
     const element = document.getElementById("resume-content");
     const opt = {
       margin: [10, 10, 10, 10], // tight margins
-      filename: "Dawit_Solomon_Resume.pdf",
+      filename: "CV.pdf",
       image: { type: "jpeg", quality: 1 },
       html2canvas: { scale: 2, useCORS: true },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
@@ -52,17 +52,17 @@ export default function PrintableResume() {
       >
         {/* Header */}
         <div className="text-center mb-6">
-          <h1 className="text-4xl font-bold mb-2">Dawit Solomon</h1>
+          <h1 className="text-4xl font-bold mb-2">Yonatan Girmachew</h1>
           <div className="text-sm flex flex-wrap justify-center gap-1 text-blue-700">
-            <a href="mailto:dawit8908@gmail.com" className="hover:underline">dawit8908@gmail.com</a>
+            <a href="mailto:yonatangirmachew3@gmail.com" className="hover:underline">yonatangirmachew3@gmail.com</a>
             <span className="text-black">—</span>
             <span className="text-black">+251 974-079-812</span>
             <span className="text-black">—</span>
             <span className="text-black">Addis Ababa, Ethiopia</span>
             <span className="text-black">—</span>
-            <a href="https://linkedin.com/in/dawit-solomon-t" className="hover:underline">linkedin.com/in/dawit-solomon-t</a>
+            <a href="https://linkedin.com/in/yonatan-girmachew" className="hover:underline">linkedin.com/in/yonatan-girmachew</a>
             <span className="text-black">—</span>
-            <a href="https://dawitsolomon-t.onrender.com/" className="hover:underline">dawitsolomon-t.onrender.com</a>
+            <a href="https://yonatangirmachew.onrender.com/" className="hover:underline">yonatangirmachew.onrender.com</a>
           </div>
           <div className="w-full border-b border-gray-400 mt-3"></div>
         </div>
