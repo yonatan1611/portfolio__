@@ -16,7 +16,7 @@ const defaultSettings = {
       { value: "3+", label1: "Years of", label2: "Development" },
       { value: "10+", label1: "Projects", label2: "Completed" },
       { value: "15+", label1: "Technologies", label2: "Used" },
-      { value: "500+", label1: "Code", label2: "Commits" }
+      { value: "300+", label1: "Code", label2: "Commits" }
     ]
   },
 
@@ -72,6 +72,8 @@ const defaultSettings = {
       "React",
       "Node.js",
       "Express",
+      "TypeScript",
+      "PostgreSQL",
       "MongoDB",
       "JavaScript",
       "Git"

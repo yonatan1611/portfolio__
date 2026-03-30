@@ -52,25 +52,29 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, please try again after 15 minutes',
 });
 
-// Apply rate limiting to all requests
-app.use(limiter);
-
 // Middleware
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
   "http://localhost:3001",
+  "http://127.0.0.1:5173",
+  "http://127.0.0.1:3000",
+  "http://127.0.0.1:3001",
   // Allow deployed URLs from env, split by comma if multiple
   ...(process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : []),
   (process.env.FRONTEND_URL || '').trim(),
   (process.env.ADMIN_URL || '').trim()
 ].filter(Boolean).map(origin => origin.replace(/\/$/, "")); // Normalize by removing trailing slashes
 
-app.use(cors({
+const corsOptions = {
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
     
     const normalizedOrigin = origin.replace(/\/$/, "");
+
+    if (process.env.NODE_ENV !== 'production') {
+      return callback(null, true);
+    }
     
     // Check if origin (or normalized) matches any allowed origin
     if (allowedOrigins.includes(normalizedOrigin) || allowedOrigins.includes(origin)) {
@@ -85,8 +89,16 @@ app.use(cors({
     const msg = `CORS Error: Origin ${origin} is not allowed.`;
     return callback(new Error(msg), false);
   },
-  credentials: true
-}));
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
+// Apply rate limiting to all requests (after CORS so preflight works)
+app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

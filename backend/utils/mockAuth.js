@@ -1,10 +1,13 @@
 import jwt from 'jsonwebtoken';
 
 // Mock admin user data (for development only)
+const DEFAULT_ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'yonatangirmachew3@gmail.com';
+const DEFAULT_ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Yonatan@123';
+
 const MOCK_ADMIN = {
   id: 'master-1',
   name: 'Yonatan Girmachew',
-  email: 'yonatangirmachew3@gmail.com',
+  email: DEFAULT_ADMIN_EMAIL,
   role: 'admin'
 };
 
@@ -12,7 +15,7 @@ const MOCK_ADMIN = {
 export const mockLogin = async (email, password) => {
   // In a real app, you'd validate against the database
   // For now, we'll accept the default credentials
-  if (email === 'yonatangirmachew3@gmail.com' && password === 'devasol@123') {
+  if (email === DEFAULT_ADMIN_EMAIL && password === DEFAULT_ADMIN_PASSWORD) {
     const token = jwt.sign(
       { id: MOCK_ADMIN.id, email: MOCK_ADMIN.email },
       process.env.JWT_SECRET || 'fallback_secret_key',

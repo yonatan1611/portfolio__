@@ -104,59 +104,78 @@ const servicesData = [
 
 const settingsData = {
   hero: {
-    role: "Full Stack Developer (MERN)",
-    welcomeText: "Hello I’m",
+    role: "Full Stack Software Engineer",
+    welcomeText: "Hello I'm",
     name: "Yonatan Girmachew",
-    bio: "Dynamic Full Stack Developer specializing in the MERN stack with a proven track record of building scalable, high-performance web applications. Expertise in crafting seamless user experiences across various domains.",
+    bio: "Full Stack Software Engineer specializing in modern web technologies. I build scalable web applications, design efficient backend systems, and create clean, responsive user interfaces that solve real-world problems.",
     stats: [
-      { value: "3+", label1: "Years of", label2: "Impact" },
-      { value: "10+", label1: "Successful", label2: "Deliveries" },
-      { value: "20+", label1: "Tools &", label2: "Tech" },
+      { value: "3+", label1: "Years of", label2: "Development" },
+      { value: "10+", label1: "Projects", label2: "Completed" },
+      { value: "15+", label1: "Technologies", label2: "Used" },
       { value: "500+", label1: "Code", label2: "Commits" }
     ]
   },
+
   about: {
     codeBlock: {
       firstName: "Yonatan",
       lastName: "Girmachew",
-      role: "Full Stack Developer",
-      traits: ["Solution-Oriented", "Reliable", "Performance-Driven"],
+      role: "Full Stack Software Engineer",
+      traits: ["Problem Solver", "Reliable", "Continuous Learner"],
       bioLines: [
-        "I engineer digital solutions that",
-        "deliver technical excellence and",
-        "measurable business outcomes."
+        "I build modern web applications",
+        "that are scalable, efficient,",
+        "and designed to solve real problems."
       ]
     },
-    title: "Engineering with",
-    subtitle: "Precision & Impact.",
+    title: "Engineering Solutions",
+    subtitle: "Through Code & Innovation.",
     paragraphs: [
-      "I'm a Full Stack Developer who bridges the gap between complex technical challenges and intuitive user experiences. My focus is on writing clean, maintainable code that directly contributes to business growth and user satisfaction.",
-      "With deep expertise in the MERN stack, I've delivered everything from optimized e-commerce platforms to high-performance social mapping applications. I thrive on solving scaling issues and improving application performance metrics."
+      "I'm a Full Stack Software Engineer focused on building high-quality web applications using modern development tools and frameworks. I enjoy working across the entire stack — from designing intuitive user interfaces to developing robust backend systems.",
+      "My goal is to create software that is efficient, scalable, and maintainable while delivering meaningful solutions for users and businesses."
     ]
   },
+
   site: {
     logoText: "Yonatan",
     resumeLink: "/resume/CV.pdf",
     profileImage: "/assets/profile-image/profile-image.png"
   },
+
   socials: {
-    github: "https://github.com/devasol",
-    linkedin: "https://www.linkedin.com/in/yonatan-girmachew/",
+    github: "https://github.com/yonatan1611",
+    linkedin: "https://www.linkedin.com/in/yonatan-girmachew-b693b3291/",
     email: "yonatangirmachew3@gmail.com",
     twitter: ""
   },
+
   education: [
     {
       degree: "B.Sc. in Computer Science",
       school: "Unity University",
-      period: "2021 — Present"
+      period: "2022 — 2026"
     }
   ],
+
   contact: {
-    capabilities: ["MERN Apps", "Secure APIs", "Performance Optimization", "E-commerce"],
-    tools: ["React", "TypeScript", "Node.js", "MongoDB", "Tailwind CSS"],
-    availability: "Available for freelance and strategic contract work."
-  },
+    capabilities: [
+      "Full Stack Web Development",
+      "REST API Development",
+      "Database Design",
+      "Performance Optimization"
+    ],
+    tools: [
+      "React",
+      "Node.js",
+      "Express",
+      "TypeScript",
+      "PostgreSQL",
+      "MongoDB",
+      "JavaScript",
+      "Git"
+    ],
+    availability: "Open to full-time roles, freelance work, and collaboration opportunities."
+  }
 
 };
 
@@ -169,103 +188,96 @@ const adminUser = {
 };
 
 const projectsData = [
-  {
-    title: "PinQuest",
-    description: "High-performance social discovery platform enabling real-time landmark sharing. Built with React 19.",
-    image: "/Project_Images/PinQuest.png",
+ {
+    title: "FoodShare",
+    description: "A scalable and community-driven food donation and distribution platform that connects donors, volunteers, and recipients to reduce food waste and hunger.",
+    image: "/Project_Images/FoodShare2.png",
     technologies: ["React", "Tailwind", "MongoDB", "Express", "Socket.io"],
-    githubLink: "https://github.com/devasol/PinQuest",
+    githubLink: "https://github.com/yonatan1611/FoodShare",
     liveLink: "https://pinquest-app.onrender.com/",
     category: "Full Stack",
     featured: true,
     order: 1
   },
   {
-    title: "DLMS - Driving License Management System",
-    description: "End-to-end digital verification system that reduced manual license processing time by 40%.",
-    image: "/Project_Images/DLMS.png",
-    technologies: ["React", "Material-UI", "Node.js", "MongoDB", "JWT"],
-    githubLink: "https://github.com/devasol/DLMS--Driving-license-management-system",
-    liveLink: "https://get-dlms.onrender.com/",
+    title: "Fere Inventory",
+    description: "A comprehensive inventory management system built with modern web technologies to help businesses track and manage their products efficiently.",
+    image: "/Project_Images/inventory.png",
+    technologies: ["React", "TailwindCSS", "Node.js", "PostgreSQL", "JWT"],
+    githubLink: "https://github.com/yonatan1611/inventory-system",
+    liveLink: "",
     category: "Full Stack",
     featured: true,
     order: 2
   },
   {
-    title: "Furni",
-    description: "Premium furniture shopping experience featuring advanced filtering and secure checkout.",
-    image: "/Project_Images/Furni.png",
-    technologies: ["React", "Vite", "Tailwind", "GSAP", "Framer Motion"],
-    githubLink: "https://github.com/devasol/Furni",
-    liveLink: "https://get-furni.onrender.com/",
+    title: "Saas-Dashboard",
+    description: "SaaS dashboard built with React, TypeScript, Tailwind, Framer Motion, Recharts, and Zustand.",
+    image: "/Project_Images/Saas.png",
+    technologies: ["React", "Vite", "Tailwind", "TypeScript", "Framer Motion"],
+    githubLink: "https://github.com/yonatan1611/saas-dashboard",
+    liveLink: "https://saas-dashboard-beta.vercel.app/",
     category: "Frontend",
     featured: true,
     order: 3
   },
   {
-    title: "NEEON",
-    description: "Scalable full-stack blog ecosystem with advanced content management and real-time nested analytics for engagement tracking.",
-    image: "/Project_Images/Neeon.png",
+    title: "Case Craft",
+    description: "Case Craft is a cinematic, motion‑forward case‑study experience customized for Asteria Health. The interface focuses on storytelling clarity, immersive visuals, and patient‑first impact narratives.",
+    image: "/Project_Images/Case.png",
     technologies: ["React", "Node.js", "Express", "MongoDB", "JWT"],
-    githubLink: "https://github.com/devasol/NEEON",
-    liveLink: "https://neeon-1.onrender.com/",
-    category: "Full Stack",
+    githubLink: "https://github.com/yonatan1611/CaseCraft",
+    liveLink: "https://case-craft-dusky.vercel.app/",
+    category: "Frontend",
     featured: true,
     order: 4
   },
-  {
-    title: "Ethio E-Commerce",
-    description: "Next-gen e-commerce platform with localized TeleBirr payment integration and high-performance admin dashboard for enterprise-grade inventory management.",
-    image: "/Project_Images/E-Commerce.png",
-    technologies: ["React", "TypeScript", "Node.js", "MongoDB", "TeleBirr"],
-    githubLink: "https://github.com/devasol/E-Commerce__C-2-C",
-    liveLink: "https://e-shop-shop.onrender.com/",
-    category: "Full Stack",
-    featured: true,
-    order: 5
-  }
 ];
 
 const skillsData = [
-  { name: "JavaScript (ES6+)", category: "Languages", proficiency: 90, order: 1 },
+  { name: "JavaScript (ES6+)", category: "Languages", proficiency: 92, order: 1 },
   { name: "TypeScript", category: "Languages", proficiency: 85, order: 2 },
-  { name: "React", category: "Frontend", proficiency: 95, order: 3 },
-  { name: "Next.js", category: "Frontend", proficiency: 85, order: 4 },
+  { name: "React.js", category: "Frontend", proficiency: 95, order: 3 },
+  { name: "Next.js", category: "Frontend", proficiency: 88, order: 4 },
   { name: "Tailwind CSS", category: "Frontend", proficiency: 90, order: 5 },
-  { name: "Node.js", category: "Backend", proficiency: 85, order: 6 },
-  { name: "Express", category: "Backend", proficiency: 85, order: 7 },
-  { name: "MongoDB", category: "Backend", proficiency: 85, order: 8 },
-  { name: "Git", category: "Tools", proficiency: 90, order: 9 },
-  { name: "Figma", category: "Tools", proficiency: 80, order: 10 }
+  { name: "Node.js", category: "Backend", proficiency: 88, order: 6 },
+  { name: "Express.js", category: "Backend", proficiency: 85, order: 7 },
+  { name: "MongoDB", category: "Database", proficiency: 90, order: 8 },
+  { name: "PostgreSQL", category: "Database", proficiency: 85, order: 9 },
+  { name: "REST APIs", category: "Backend", proficiency: 90, order: 10 },
+  { name: "Git & GitHub", category: "Tools", proficiency: 92, order: 11 },
+  { name: "Figma", category: "Tools", proficiency: 80, order: 12 }
 ];
 
 const experienceData = [
   {
     company: "Freelance",
-    position: "Full Stack Developer",
-    startDate: new Date("2021-01-01"),
+    position: "Full Stack Software Engineer",
+    startDate: "2022-01-01",
     current: true,
-    description: "Providing technical consulting and end-to-end development for SME clients.",
+    description: "Designing and building full-stack web applications with a focus on real-world problem solving and performance.",
     responsibilities: [
-      "Engineered high-performance web applications using the MERN stack, reducing page load times by 35%.",
-      "Developed custom e-commerce solutions with secure payment integrations, driving a 20% increase in sales conversion.",
-      "Streamlined administrative workflows through custom dashboards, reducing manual processing time by over 50%."
+      "Built and deployed full-stack applications including a food sharing platform and a movie ticket booking system using the MERN stack.",
+      "Designed RESTful APIs and implemented authentication systems using JWT for secure user access.",
+      "Optimized frontend performance and state management, improving user experience and reducing load times.",
+      "Developed responsive and user-friendly interfaces using React and Tailwind CSS."
     ],
-    technologies: ["MERN stack", "Typescript", "Redux", "JWT"],
+    technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "TypeScript", "JWT"],
     location: "Remote",
     type: "Freelance"
   },
   {
     company: "Prodigy InfoTech",
     position: "Software Developer Intern",
-    startDate: new Date("2024-10-01"),
-    current: true,
-    description: "Engineering scalable web solutions within agile workflows.",
+    startDate: "2024-10-01",
+    current: false,
+    description: "Worked on modern frontend development and contributed to scalable web applications in a collaborative environment.",
     responsibilities: [
-      "Collaborated in agile workflows to deliver modular React components for enterprise projects.",
-      "Optimized client-side rendering logic, improving Lighthouse performance scores by an average of 25 points."
+      "Developed reusable React components and improved UI consistency across projects.",
+      "Enhanced application performance through better state handling and rendering optimization.",
+      "Collaborated with team members using Git-based workflows in an agile setup."
     ],
-    technologies: ["React.js", "Tailwind CSS", "Full-Stack"],
+    technologies: ["React.js", "Tailwind CSS", "JavaScript"],
     location: "Remote",
     type: "Internship"
   }

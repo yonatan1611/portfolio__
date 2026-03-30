@@ -8,8 +8,8 @@ const createAdminUser = async () => {
     console.log('🧹 Demo credentials cleared');
 
     // 2. UPSERT the real admin user
-    const adminEmail = 'yonatangirmachew3@gmail.com';
-    const adminPassword = 'devasol@123';
+    const adminEmail = process.env.ADMIN_EMAIL || 'yonatangirmachew3@gmail.com';
+    const adminPassword = process.env.ADMIN_PASSWORD || 'Yonatan@123';
     
     let admin = await User.findOne({ email: adminEmail });
     

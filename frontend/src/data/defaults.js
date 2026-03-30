@@ -11,77 +11,69 @@ export const defaultProjects = [
     order: 1
   },
   {
-    title: "DLMS - Driving License Management System",
-    description: "End-to-end digital verification system that reduced manual license processing time by 40%.",
-    image: "/Project_Images/Saas.png",
-    technologies: ["React", "Material-UI", "Node.js", "MongoDB", "JWT"],
-    githubLink: "https://github.com/devasol/DLMS--Driving-license-management-system",
-    liveLink: "https://get-dlms.onrender.com/",
+    title: "Fere Inventory",
+    description: "A comprehensive inventory management system built with modern web technologies to help businesses track and manage their products efficiently.",
+    image: "/Project_Images/inventory.png",
+    technologies: ["React", "TailwindCSS", "Node.js", "PostgreSQL", "JWT"],
+    githubLink: "https://github.com/yonatan1611/inventory-system",
+    liveLink: "",
     category: "Full Stack",
     featured: true,
     order: 2
   },
   {
-    title: "Furni",
-    description: "Premium furniture shopping experience featuring advanced filtering and secure checkout.",
-    image: "/Project_Images/Furni.png",
-    technologies: ["React", "Vite", "Tailwind", "GSAP", "Framer Motion"],
-    githubLink: "https://github.com/devasol/Furni",
-    liveLink: "https://get-furni.onrender.com/",
+    title: "Saas-Dashboard",
+    description: "SaaS dashboard built with React, TypeScript, Tailwind, Framer Motion, Recharts, and Zustand.",
+    image: "/Project_Images/Saas.png",
+    technologies: ["React", "Vite", "Tailwind", "TypeScript", "Framer Motion"],
+    githubLink: "https://github.com/yonatan1611/saas-dashboard",
+    liveLink: "https://saas-dashboard-beta.vercel.app/",
     category: "Frontend",
     featured: true,
     order: 3
   },
   {
-    title: "NEEON",
-    description: "Scalable full-stack blog ecosystem with advanced content management and real-time nested analytics for engagement tracking.",
-    image: "/Project_Images/Neeon.png",
+    title: "Case Craft",
+    description: "Case Craft is a cinematic, motion‑forward case‑study experience customized for Asteria Health. The interface focuses on storytelling clarity, immersive visuals, and patient‑first impact narratives.",
+    image: "/Project_Images/Case.png",
     technologies: ["React", "Node.js", "Express", "MongoDB", "JWT"],
-    githubLink: "https://github.com/devasol/NEEON",
-    liveLink: "https://neeon-1.onrender.com/",
-    category: "Full Stack",
+    githubLink: "https://github.com/yonatan1611/CaseCraft",
+    liveLink: "https://case-craft-dusky.vercel.app/",
+    category: "Frontend",
     featured: true,
     order: 4
   },
-  {
-    title: "Ethio E-Commerce",
-    description: "Next-gen e-commerce platform with localized TeleBirr payment integration and high-performance admin dashboard for enterprise-grade inventory management.",
-    image: "/Project_Images/E-Commerce.png",
-    technologies: ["React", "TypeScript", "Node.js", "MongoDB", "TeleBirr"],
-    githubLink: "https://github.com/devasol/E-Commerce__C-2-C",
-    liveLink: "https://e-shop-shop.onrender.com/",
-    category: "Full Stack",
-    featured: true,
-    order: 5
-  }
 ];
 
 export const defaultSkills = [
-  { name: "JavaScript (ES6+)", category: "Languages", proficiency: 90, order: 1 },
+  { name: "JavaScript (ES6+)", category: "Languages", proficiency: 92, order: 1 },
   { name: "TypeScript", category: "Languages", proficiency: 85, order: 2 },
-  { name: "React", category: "Frontend", proficiency: 95, order: 3 },
-  { name: "Next.js", category: "Frontend", proficiency: 85, order: 4 },
+  { name: "React.js", category: "Frontend", proficiency: 95, order: 3 },
+  { name: "Next.js", category: "Frontend", proficiency: 88, order: 4 },
   { name: "Tailwind CSS", category: "Frontend", proficiency: 90, order: 5 },
-  { name: "Node.js", category: "Backend", proficiency: 85, order: 6 },
-  { name: "Express", category: "Backend", proficiency: 85, order: 7 },
-  { name: "MongoDB", category: "Backend", proficiency: 85, order: 8 },
-  { name: "Git", category: "Tools", proficiency: 90, order: 9 },
-  { name: "Figma", category: "Tools", proficiency: 80, order: 10 }
+  { name: "Node.js", category: "Backend", proficiency: 88, order: 6 },
+  { name: "Express.js", category: "Backend", proficiency: 85, order: 7 },
+  { name: "MongoDB", category: "Database", proficiency: 90, order: 8 },
+  { name: "PostgreSQL", category: "Database", proficiency: 85, order: 9 },
+  { name: "REST APIs", category: "Backend", proficiency: 90, order: 10 },
+  { name: "Git & GitHub", category: "Tools", proficiency: 92, order: 11 },
+  { name: "Figma", category: "Tools", proficiency: 80, order: 12 }
 ];
 
 export const defaultExperiences = [
   {
     company: "Freelance",
-    position: "Full Stack Developer",
-    startDate: "2021-01-01",
+    position: "Full Stack Software Engineer",
+    startDate: "2022-01-01",
     current: true,
-    description: "Providing high-impact technical consulting and end-to-end development for SME clients.",
+    description: "Designing and building full-stack web applications with a focus on real-world problem solving and performance.",
     responsibilities: [
-      "Engineered high-performance web applications using the MERN stack, reducing page load times by 35%.",
-      "Developed custom e-commerce solutions with secure multi-gateway payment integrations, driving a 20% increase in sales conversion.",
-      "Streamlined administrative workflows through custom dashboards, reducing manual processing time by over 50%."
+      "Built and deployed full-stack applications including a food sharing platform and a movie ticket booking system using the MERN stack.",
+      "Designed RESTful APIs and implemented authentication systems using JWT for secure user access.",
+      "Optimized frontend performance and state management, improving user experience and reducing load times.",
+      "Developed responsive and user-friendly interfaces using React and Tailwind CSS."
     ],
-    technologies: ["MERN stack", "Typescript", "Redux", "JWT"],
+    technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "TypeScript", "JWT"],
     location: "Remote",
     type: "Freelance"
   },
@@ -89,14 +81,31 @@ export const defaultExperiences = [
     company: "Prodigy InfoTech",
     position: "Software Developer Intern",
     startDate: "2024-10-01",
-    current: true,
-    description: "Engineering scalable web solutions within agile workflows, focusing on performance and cross-functional team collaboration.",
+    current: false,
+    description: "Worked on modern frontend development and contributed to scalable web applications in a collaborative environment.",
     responsibilities: [
-      "Collaborated in agile workflows to deliver modular React components for enterprise-scale projects.",
-      "Optimized client-side rendering logic, improving Lighthouse performance scores by an average of 25 points."
+      "Developed reusable React components and improved UI consistency across projects.",
+      "Enhanced application performance through better state handling and rendering optimization.",
+      "Collaborated with team members using Git-based workflows in an agile setup."
     ],
-    technologies: ["React.js", "Tailwind CSS", "Full-Stack"],
+    technologies: ["React.js", "Tailwind CSS", "JavaScript"],
     location: "Remote",
+    type: "Internship"
+  }, 
+    {
+    company: "Soleni Construction",
+    position: "Software Developer Intern",
+    startDate: "2020-10-01",
+    current: false,
+    description: "Worked on modern frontend development and contributed to scalable web applications in a collaborative environment.",
+    responsibilities: [
+      "Ensure user satisfaction and retention by providing responsive tech support.",
+      "Build and maintain software documentation sites using various programming languages.",
+      "Increase productivity by using software to organize, track bug patches and add feature requests.",
+      "Collaborate with other developers to update the website and create new features."
+    ],
+    technologies: ["React.js", "Tailwind CSS", "JavaScript"],
+    location: "OnSite",
     type: "Internship"
   }
 ];
