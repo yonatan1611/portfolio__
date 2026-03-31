@@ -1,4 +1,4 @@
-# Interactive Portfolio
+# Portfolio
 
 A high-performance developer portfolio featuring a modern glassmorphic design, dynamic 3D interactions, and a full-featured administrative dashboard.
 
