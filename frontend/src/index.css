@@ -451,13 +451,33 @@ body.modal-open #root {
 }
 
 @media (max-width: 900px) {
+  .spotlight-stage {
+    min-height: 0;
+  }
   .spotlight-card {
     grid-template-columns: 1fr;
+    position: relative;
+    opacity: 0;
+    transform: none;
   }
   .spotlight-media {
     border-top-right-radius: 28px;
     border-bottom-left-radius: 0;
     min-height: 240px;
+  }
+  .spotlight-media-inner {
+    position: relative;
+    padding: 16px;
+  }
+  .spotlight-image {
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+  .spotlight-card.is-active {
+    opacity: 1;
+  }
+  .spotlight-card:not(.is-active) {
+    display: none;
   }
 }
 
