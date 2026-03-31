@@ -16,6 +16,7 @@ export default function OptimizedImage({
   src,
   alt,
   className = '',
+  imgClassName = 'object-cover',
   fallback = null,
   aspectRatio = '16/9',
   priority = false, // Set true for above-the-fold images
@@ -82,7 +83,7 @@ export default function OptimizedImage({
     <div
       ref={imgRef}
       className={`relative overflow-hidden ${className}`}
-      style={{ aspectRatio }}
+      style={aspectRatio ? { aspectRatio } : undefined}
     >
       {/* Loading skeleton */}
       {!isLoaded && isInView && (
@@ -99,7 +100,7 @@ export default function OptimizedImage({
           onLoad={handleLoad}
           onError={handleError}
           className={`
-            w-full h-full object-cover
+            w-full h-full ${imgClassName}
             transition-all duration-700 ease-out
             ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}
           `}

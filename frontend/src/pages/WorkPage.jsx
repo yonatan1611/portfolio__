@@ -243,7 +243,9 @@ function ProjectModal({ p, onClose }) {
             src={p.image}
             alt={p.title}
             priority={true}
-            className="w-full h-full p-4 lg:p-0 transform scale-100 lg:scale-[0.85] hover:scale-[0.9] transition-all duration-1000 relative z-10"
+            aspectRatio={null}
+            imgClassName="object-contain"
+            className="w-full h-full relative z-10"
             onLoad={() => setModalImageLoaded(true)}
             onError={() => setModalImageError(true)}
             fallback={

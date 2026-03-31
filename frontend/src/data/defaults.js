@@ -13,7 +13,7 @@ export const defaultProjects = [
   {
     title: "Fere Inventory",
     description: "A comprehensive inventory management system built with modern web technologies to help businesses track and manage their products efficiently.",
-    image: "/Project_Images/inventory.png",
+    image: "/Project_Images/Inventory.png",
     technologies: ["React", "TailwindCSS", "Node.js", "PostgreSQL", "JWT"],
     githubLink: "https://github.com/yonatan1611/inventory-system",
     liveLink: "",
@@ -81,6 +81,7 @@ export const defaultExperiences = [
     company: "Prodigy InfoTech",
     position: "Software Developer Intern",
     startDate: "2024-10-01",
+    endDate: "2025-01-31",
     current: false,
     description: "Worked on modern frontend development and contributed to scalable web applications in a collaborative environment.",
     responsibilities: [
@@ -94,8 +95,9 @@ export const defaultExperiences = [
   }, 
     {
     company: "Soleni Construction",
-    position: "Software Developer Intern",
+    position: "Full-Stack Intern",
     startDate: "2020-10-01",
+    endDate: "2021-05-31",
     current: false,
     description: "Worked on modern frontend development and contributed to scalable web applications in a collaborative environment.",
     responsibilities: [

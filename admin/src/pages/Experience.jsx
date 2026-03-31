@@ -22,7 +22,7 @@ const Experience = () => {
     endDate: '',
     current: false,
     description: '',
-    technologies: [],
+    technologies: '',
     location: '',
     type: 'Full-time'
   });
@@ -50,12 +50,6 @@ const Experience = () => {
         ...prev,
         [name]: checked
       }));
-    } else if (name === 'technologies') {
-      // Handle technologies as an array
-      setFormData(prev => ({
-        ...prev,
-        technologies: value.split(',').map(t => t.trim()).filter(t => t)
-      }));
     } else {
       setFormData(prev => ({
         ...prev,
@@ -68,9 +62,13 @@ const Experience = () => {
     e.preventDefault();
 
     try {
+      const technologies = Array.isArray(formData.technologies)
+        ? formData.technologies
+        : formData.technologies.split(',').map(t => t.trim()).filter(t => t);
+
       const experienceData = {
         ...formData,
-        technologies: formData.technologies.split(',').map(t => t.trim()).filter(t => t),
+        technologies,
         startDate: new Date(formData.startDate),
         endDate: formData.endDate ? new Date(formData.endDate) : null
       };
@@ -133,7 +131,7 @@ const Experience = () => {
       endDate: '',
       current: false,
       description: '',
-      technologies: [],
+      technologies: '',
       location: '',
       type: 'Full-time'
     });
@@ -355,14 +353,14 @@ const Experience = () => {
                   
                   <div className="space-y-2">
                     <label className="label-style">Technologies (comma separated)</label>
-                    <input
-                      type="text"
-                      name="technologies"
-                      placeholder="React, Node.js, AWS, TypeScript..."
-                      value={Array.isArray(formData.technologies) ? formData.technologies.join(',') : formData.technologies}
-                      onChange={handleChange}
-                      className="input-field"
-                    />
+                      <input
+                        type="text"
+                        name="technologies"
+                        placeholder="React, Node.js, AWS, TypeScript..."
+                        value={formData.technologies}
+                        onChange={handleChange}
+                        className="input-field"
+                      />
                   </div>
                   
                   <div className="flex gap-4 pt-4">

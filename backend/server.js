@@ -20,8 +20,7 @@ import autoSeedData from './utils/autoSeed.js';
 // Load environment variables
 dotenv.config();
 
-// Connect to database
-connectDB();
+// Connect to database (awaited before server starts)
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -98,6 +97,7 @@ app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
 // Apply rate limiting to all requests (after CORS so preflight works)
+app.use('/api/health', (req, res, next) => next()); // Skip rate limiting for health check
 app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -117,13 +117,26 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' });
 });
 
-// Start server
-app.listen(PORT, async () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+// Start server only after DB connection is ready
+const startServer = async () => {
+  await connectDB();
 
-  // Create admin user if it doesn't exist
-  await createAdminUser();
-  
-  // Auto-seed data if collections are empty (for live deployment)
-  await autoSeedData();
-});
+  app.listen(PORT, async () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+
+    // Create admin user if it doesn't exist
+    await createAdminUser();
+
+    // Auto-seed data only when explicitly enabled
+    if (process.env.AUTO_SEED === 'true') {
+      await autoSeedData();
+    }
+  });
+};
+
+startServer();
+
+
+
+
+
